@@ -1,0 +1,16 @@
+version: 0.2phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t  web:1 .
+      - docker tag web:1 624852564786.dkr.ecr.ap-south-1.amazonaws.com/docker
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 624852564786.dkr.ecr.ap-south-1.amazonaws.com/docker
