@@ -3,15 +3,15 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 624852564786.dkr.ecr.ap-south-1.amazonaws.com/demo-check
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 624852564786.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t  web:1 .
-      - docker tag web:1 624852564786.dkr.ecr.ap-south-1.amazonaws.com/demo-check
+      - docker build -t docker-delete .
+      - docker tag docker-delete:latest 624852564786.dkr.ecr.ap-south-1.amazonaws.com/docker-delete:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 624852564786.dkr.ecr.ap-south-1.amazonaws.com/demo-check
+      - docker push 624852564786.dkr.ecr.ap-south-1.amazonaws.com/docker-delete:latest
