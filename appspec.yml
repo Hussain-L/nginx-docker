@@ -1,9 +1,6 @@
 version: 0.0
 os: linux
-files:
-  - source: /
-    destination: /home/ubuntu
-      
+
 hooks:
   AfterInstall:
     - location: Scripts/script.sh
