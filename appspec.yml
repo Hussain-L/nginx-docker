@@ -6,4 +6,4 @@ files:
       
 hooks:
   AfterInstall:
-    - location: scripts.sh
+    - location: Scripts/scripts.sh
